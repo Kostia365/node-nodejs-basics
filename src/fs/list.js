@@ -1,7 +1,9 @@
 import fs from 'fs';
 
+const __dirname = import.meta.dirname;
+
 const list = async () => {
-fs.readdir('node-nodejs-basics/src/fs/files', (err, files) => {
+fs.readdir(__dirname + 'files', (err, files) => {
     if (err) {
         console.error('FS operation failed');
         return;

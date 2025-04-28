@@ -1,7 +1,9 @@
 import fs from'fs';
 
+const __dirname = import.meta.dirname;
+
 const remove = async () => {
-  fs.unlink('node-nodejs-basics/src/fs/files/fileToRemove.txt', (err) => {
+  fs.unlink(__dirname + '/files/fileToRemove.txt', (err) => {
     if (err) {
       console.error('FS operation failed');
       return;

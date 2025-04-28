@@ -1,18 +1,21 @@
 import fs from 'fs/promises';
 
+
+const __dirname = import.meta.dirname;
+
 const copy = async () => {
     try {
-        await fs.access('node-nodejs-basics/src/fs/files_copy');
+        await fs.access(__dirname + '/files_copy');
         console.error('Directory already exists!');
     } catch {
-        const files = await fs.readdir('node-nodejs-basics/src/fs/files');
+        const files = await fs.readdir(__dirname + '/files');
         console.log(files);
-        await fs.mkdir('node-nodejs-basics/src/fs/files_copy', { recursive: true });
+        await fs.mkdir(__dirname + 'files_copy', { recursive: true });
         await Promise.all(
             files.map(async (file) => {
                     await fs.copyFile(
-                        `node-nodejs-basics/src/fs/files/${file}`,
-                        `node-nodejs-basics/src/fs/files_copy/${file}`
+                        __dirname + '${file}',
+                        __dirname + '${file}'
                     );                
             })
         );
